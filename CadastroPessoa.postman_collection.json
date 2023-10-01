@@ -1,0 +1,347 @@
+{
+	"info": {
+		"_postman_id": "ef503e83-249d-4a0c-9d16-6490cd7d5a07",
+		"name": "CadastroPessoa",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30101365"
+	},
+	"item": [
+		{
+			"name": "Buscar pessoa",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/contacts/search?nome=Vagner",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"contacts",
+						"search"
+					],
+					"query": [
+						{
+							"key": "nome",
+							"value": "Vagner"
+						},
+						{
+							"key": "cpf",
+							"value": "104.268.129-56",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar pessoa paginado",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/contacts?page=1&size=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"contacts"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "size",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar pessoa por ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/contacts/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"contacts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Criar Pessoa 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Junior\",\r\n    \"cpf\": \"104.268.129-56\",\r\n    \"dataNascimento\": \"2004-06-30\",\r\n    \"contatos\": [\r\n        {\r\n            \"nome\": \"Alison\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        },\r\n        {\r\n            \"nome\": \"joao\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/contacts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"contacts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Criar Pessoa 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Evandro\",\r\n    \"cpf\": \"382.077.020-87\",\r\n    \"dataNascimento\": \"2004-04-30\",\r\n    \"contatos\": [\r\n        {\r\n            \"nome\": \"Alison\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        },\r\n        {\r\n            \"nome\": \"joao\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        },\r\n        {\r\n            \"nome\": \"Antonio\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        },\r\n        {\r\n            \"nome\": \"Liss\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/contacts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"contacts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Criar Pessoa 3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Marcelo\",\r\n    \"cpf\": \"183.763.190-51\",\r\n    \"dataNascimento\": \"2004-02-03\",\r\n    \"contatos\": [\r\n        {\r\n            \"nome\": \"Marcia\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/contacts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"contacts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Criar Pessoa 4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Maria\",\r\n    \"cpf\": \"101.655.540-70\",\r\n    \"dataNascimento\": \"2000-08-03\",\r\n    \"contatos\": [\r\n        {\r\n            \"nome\": \"Bianca\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        },\r\n        {\r\n            \"nome\": \"Paula\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        },\r\n        {\r\n            \"nome\": \"Junior\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        },\r\n        {\r\n            \"nome\": \"Sergio\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/contacts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"contacts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Criar Pessoa 5",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Ariadne\",\r\n    \"cpf\": \"319.336.320-03\",\r\n    \"dataNascimento\": \"1977-04-15\",\r\n    \"contatos\": [\r\n        {\r\n            \"nome\": \"Vagner\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        },\r\n        {\r\n            \"nome\": \"Junior\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        },\r\n        {\r\n            \"nome\": \"Maria\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/contacts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"contacts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Criar Pessoa 6",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Guilherme\",\r\n    \"cpf\": \"354.036.270-30\",\r\n    \"dataNascimento\": \"2005-11-16\",\r\n    \"contatos\": [\r\n        {\r\n            \"nome\": \"Daniel\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        },\r\n        {\r\n            \"nome\": \"Cristina\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/contacts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"contacts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Criar Pessoa 7",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Vagner\",\r\n    \"cpf\": \"774.400.240-79\",\r\n    \"dataNascimento\": \"1980-08-15\",\r\n    \"contatos\": [\r\n        {\r\n            \"nome\": \"Ariadne\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        },\r\n        {\r\n            \"nome\": \"Junior\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        },\r\n        {\r\n            \"nome\": \"Maria\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/contacts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"contacts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar Pessoa",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Vitao\",\r\n    \"cpf\": \"09473787901\",\r\n    \"dataNascimento\": \"2004-06-30\",\r\n    \"contatos\": [\r\n        {\r\n            \"nome\": \"Pedro\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        },\r\n        {\r\n            \"nome\": \"Marcelo\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/contacts/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"contacts",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deletar Pessoa",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/contacts/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"contacts",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
