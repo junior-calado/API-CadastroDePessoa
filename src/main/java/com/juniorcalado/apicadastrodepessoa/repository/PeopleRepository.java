@@ -16,16 +16,16 @@ import java.util.List;
 public interface PeopleRepository extends JpaRepository<People, Long> {
 
     @Query("SELECT p FROM People p")
-    List<People> findAllPessoas();
+    List<People> findAllPeople();
 
     @Query("SELECT COUNT(p) > 0 FROM People p WHERE p.cpf = :cpf")
     boolean hasCpf(@Param("cpf") String cpf);
 
     @Query("SELECT p FROM People p WHERE " +
-            "(:nome IS NULL OR lower(p.nome) LIKE lower(concat('%', :nome, '%'))) AND " +
+            "(:name IS NULL OR lower(p.name) LIKE lower(concat('%', :name, '%'))) AND " +
             "(:cpf IS NULL OR lower(p.cpf) LIKE lower(concat('%', :cpf, '%')))")
     List<People> findAllByParams(
-            @Param("nome") String nome,
+            @Param("name") String name,
             @Param("cpf") String cpf
     );
 

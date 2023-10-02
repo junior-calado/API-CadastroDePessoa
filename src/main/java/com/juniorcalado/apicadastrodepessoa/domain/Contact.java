@@ -7,25 +7,25 @@ import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
-
-
+import java.io.Serializable;
 
 
 @Entity
-public class Contact {
+public class Contact implements Serializable {
+    private static final long serialVersionUID = 1L;
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "O nome do contato é obrigatório")
-    private String nome;
+    @NotBlank(message = "Contact name is required")
+    private String name;
 
-    @NotBlank(message = "É necessario informar o telefone do contato")
-    private String telefone;
+    @NotBlank(message = "You must provide the contact's telephone number")
+    private String phone;
 
-    @Email(message = "É necessario informar um email valido")
+    @Email(message =  "A valid email address must be provided")
     private String email;
 
 
@@ -37,20 +37,20 @@ public class Contact {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String nome) {
+        this.name = nome;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setPhone(String telefone) {
+        this.phone = telefone;
     }
 
     public String getEmail() {

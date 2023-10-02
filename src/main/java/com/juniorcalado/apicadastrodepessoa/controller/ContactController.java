@@ -1,5 +1,6 @@
 package com.juniorcalado.apicadastrodepessoa.controller;
 
+import com.juniorcalado.apicadastrodepessoa.exceptions.PeopleExceptions;
 import com.juniorcalado.apicadastrodepessoa.services.PaginatedPeople;
 import com.juniorcalado.apicadastrodepessoa.domain.People;
 import com.juniorcalado.apicadastrodepessoa.repository.PeopleRepository;
@@ -13,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -20,9 +22,10 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("api/contacts")
-public class ContactController {
+public class ContactController implements Serializable {
+    private static final long serialVersionUID = 1L;
 
-    @Autowired//Injeta dependencia automatica
+    @Autowired
     private final PeopleRepository peopleRepository;
 
     public ContactController(PeopleRepository peopleRepository) {
@@ -30,13 +33,13 @@ public class ContactController {
     }
 
     @GetMapping
-    public PaginatedPeople getPessoasPaginadas(
+    public PaginatedPeople getPeoplePages(
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "10") int size
     ) {
         int internalPage = page - 1;
-        List<People> allPessoas = peopleRepository.findAllPessoas();
-        int totalElements = allPessoas.size();
+        List<People> allPeople = peopleRepository.findAllPeople();
+        int totalElements = allPeople.size();
 
         int startIndex = internalPage * size;
         int endIndex = Math.min(startIndex + size, totalElements);
@@ -45,11 +48,11 @@ public class ContactController {
             return new PaginatedPeople(Collections.emptyList(), page, 0, size, totalElements);
         }
 
-        List<People> pessoasPaginadas = allPessoas.subList(startIndex, endIndex);
+        List<People> peoplePaginated = allPeople.subList(startIndex, endIndex);
 
         int totalPages = (int) Math.ceil((double) totalElements / size);
 
-        return new PaginatedPeople(pessoasPaginadas, page, totalPages, size, totalElements);
+        return new PaginatedPeople(peoplePaginated, page, totalPages, size, totalElements);
     }
 
     @GetMapping("/search")
@@ -57,18 +60,17 @@ public class ContactController {
             @RequestParam(required = false) String nome,
             @RequestParam(required = false) String cpf
     ){
-        List<People> pessoas = peopleRepository.findAllByParams(nome, cpf);
-        return ResponseEntity.ok(pessoas);
+        List<People> people = peopleRepository.findAllByParams(nome, cpf);
+        return ResponseEntity.ok(people);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<People> findById(@PathVariable Long id){
-        Optional<People> pessoa = peopleRepository.findById(id);
-        if (pessoa.isPresent()) {
-            return ResponseEntity.ok(pessoa.get());
+        Optional<People> people = peopleRepository.findById(id);
+        if (people.isPresent()) {
+            return ResponseEntity.ok(people.get());
         } else {
-            //Da pra criar uma exception
-            return ResponseEntity.notFound().build();
+            throw new PeopleExceptions("ID not found");
         }
     }
 
@@ -82,12 +84,12 @@ public class ContactController {
             return ResponseEntity.badRequest().body(erros);
         }
 
-        if (people.getContatos() == null || people.getContatos().isEmpty()) {
-            return ResponseEntity.badRequest().body("É necessário fornecer pelo menos um contato.");
+        if (people.getContacts() == null || people.getContacts().isEmpty()) {
+            return ResponseEntity.badRequest().body("You must provide at least one contact");
         }
 
         if (peopleRepository.hasCpf(people.getCpf())) {
-            return ResponseEntity.badRequest().body("Este CPF já esta cadastrado.");
+            return ResponseEntity.badRequest().body("This CPF is already registered");
         }
 
         People savePeople = peopleRepository.save(people);
@@ -96,8 +98,8 @@ public class ContactController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Object> updatePeople(@PathVariable Long id, @Valid @RequestBody People people) {
-        if (people.getContatos() == null || people.getContatos().isEmpty()) {
-            return ResponseEntity.badRequest().body("É necessário fornecer pelo menos um contato.");
+        if (people.getContacts() == null || people.getContacts().isEmpty()) {
+            return ResponseEntity.badRequest().body("You must provide at least one contact");
         }
 
         Optional<People> hasPeople = peopleRepository.findById(id);
@@ -105,31 +107,30 @@ public class ContactController {
 
             People updatePeople = hasPeople.get();
 
-            updatePeople.setNome(people.getNome());
+            updatePeople.setName(people.getName());
             updatePeople.setCpf(people.getCpf());
-            updatePeople.setDataNascimento(people.getDataNascimento());
+            updatePeople.setBirthDate(people.getBirthDate());
 
-            updatePeople.getContatos().clear();
+            updatePeople.getContacts().clear();
 
-            updatePeople.getContatos().addAll(people.getContatos());
+            updatePeople.getContacts().addAll(people.getContacts());
 
             peopleRepository.save(updatePeople);
             return ResponseEntity.ok(updatePeople);
         } else {
-            return ResponseEntity.notFound().build();
+            throw new PeopleExceptions("Unable to update as the ID provided is invalid");
         }
 
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<People> deletePeople(@PathVariable Long id){
-        Optional<People> pessoa = peopleRepository.findById(id);
-        if (pessoa.isPresent()) {
+        Optional<People> people = peopleRepository.findById(id);
+        if (people.isPresent()) {
             peopleRepository.deleteById(id);
             return ResponseEntity.noContent().build();
         } else {
-            //Da pra criar uma exception
-            return ResponseEntity.notFound().build();
+            throw new PeopleExceptions("Unable to delete as the ID provided is invalid");
         }
     }
 

@@ -13,43 +13,41 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Entity
-public class People {
+public class People implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "O nome é obrigatório")
-    private String nome;
+    @NotBlank(message = "You must provide a name")
+    private String name;
 
-    @CPF(message = "CPF inválido")
-    @NotBlank(message = "O CPF é obrigatório")
+    @CPF(message = "CPF invalid")
+    @NotBlank(message = "CPF is mandatory")
     private String cpf;
 
-    @Past(message = "A data de nascimento deve ser uma data passada")
-    @NotNull(message = "A data de nascimento é obrigatória")
+    @Past(message = "The date of birth must be a date in the past")
+    @NotNull(message = "Date of birth is mandatory")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    private LocalDate dataNascimento;
+    private LocalDate birthDate;
 
     @Valid
-    @Size(min = 1, message = "Deve haver pelo menos um contato")
+    @Size(min = 1, message = "There must be at least one contact")
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    //CascadeTyde.all se excluir a pessoa exclui os contatos dela
-    //Cria uma lista de relacionamento no banco
-    private List<Contact> contatos = new ArrayList<>();
+    private List<Contact> contacts = new ArrayList<>();
 
 
     public People() {
     }
 
-    public People(Long id, String nome, String cpf, LocalDate dataNascimento) {
+    public People(Long id, String name, String cpf, LocalDate birthDate) {
         this.id = id;
-        this.nome = nome;
+        this.name = name;
         this.cpf = cpf;
-        this.dataNascimento = dataNascimento;
+        this.birthDate = birthDate;
     }
 
 
@@ -61,12 +59,12 @@ public class People {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String nome) {
+        this.name = nome;
     }
 
     public String getCpf() {
@@ -77,31 +75,19 @@ public class People {
         this.cpf = cpf;
     }
 
-    public LocalDate getDataNascimento() {
-        return dataNascimento;
+    public LocalDate getBirthDate() {
+        return birthDate;
     }
 
-    public void setDataNascimento(LocalDate dataNascimento) {
-        this.dataNascimento = dataNascimento;
+    public void setBirthDate(LocalDate dataNascimento) {
+        this.birthDate = dataNascimento;
     }
 
-    public List<Contact> getContatos() {
-        return contatos;
+    public List<Contact> getContacts() {
+        return contacts;
     }
 
-    public void setContatos(List<Contact> contatos) {
-        this.contatos = contatos;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof People people)) return false;
-        return Objects.equals(getId(), people.getId());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId());
+    public void setContacts(List<Contact> contatos) {
+        this.contacts = contatos;
     }
 }

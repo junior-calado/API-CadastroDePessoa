@@ -1,98 +1,131 @@
+package com.juniorcalado.apicadastrodepessoa.controler;
+
 import com.juniorcalado.apicadastrodepessoa.controller.ContactController;
 import com.juniorcalado.apicadastrodepessoa.domain.People;
 import com.juniorcalado.apicadastrodepessoa.repository.PeopleRepository;
-import com.juniorcalado.apicadastrodepessoa.services.PaginatedPeople;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.test.web.server.LocalServerPort;
-import org.springframework.http.HttpStatus;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.validation.BindingResult;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest
+@AutoConfigureMockMvc
 public class ContactControllerTest {
 
-    private ContactController contactController;
-
-    @InjectMocks
-    private ContactController pessoaService;
-
-    @LocalServerPort
-    private int port;
-
     @Autowired
-    private TestRestTemplate restTemplate;
+    private MockMvc mockMvc;
 
-    @Mock
+    @MockBean
     private PeopleRepository peopleRepository;
 
-    @BeforeEach
-    public void setUp() {
-        MockitoAnnotations.openMocks(this);
-        contactController = new ContactController(peopleRepository);
-    }
-
+    @Autowired
+    private ContactController contactController;
 
     @Test
-    public void testCreatePessoa() {
-        People pessoa = new People();
-        pessoa.setNome("Maria");
+    public void testCreatePeopleWithValidationError() {
+        People people = new People();
+        BindingResult bindingResult = mock(BindingResult.class);
+        when(bindingResult.hasErrors()).thenReturn(true);
 
-        when(peopleRepository.save(any(People.class))).thenReturn(pessoa);
-
-        People result = pessoaService.createPeople(pessoa);
+        ResponseEntity<Object> result = contactController.createPeople(people, bindingResult);
 
         assertNotNull(result);
-        assertEquals("Maria", result.getNome());
+        assertEquals(400, result.getStatusCodeValue());
     }
 
-
     @Test
-    public void testUpdatePeople() {
-        // Simulando dados para o teste
-        Long id = 1L;
-        People existingPeople = new People(/* preencher com dados de exemplo */);
-        People updatedPeople = new People(/* preencher com dados de exemplo atualizados */);
+    public void testCreatePeopleWithDuplicateCPF() {
+        People people = new People();
+        BindingResult bindingResult = mock(BindingResult.class);
+        when(bindingResult.hasErrors()).thenReturn(false);
+        when(peopleRepository.hasCpf(people.getCpf())).thenReturn(true);
 
-        when(peopleRepository.findById(id)).thenReturn(Optional.of(existingPeople));
+        ResponseEntity<Object> result = contactController.createPeople(people, bindingResult);
 
-        // Chamar o método e verificar a resposta
-        ResponseEntity<Object> result = contactController.updatePeople(id, updatedPeople);
         assertNotNull(result);
-        assertEquals(200, result.getStatusCodeValue()); // Verificar o status code esperado
+        assertEquals(400, result.getStatusCodeValue());
     }
 
     @Test
-    public void testDeletePessoa() {
-        // Simular uma pessoa existente com ID 1L no banco de dados (seu caso pode variar)
+    public void testGetPeopleByIdNotFound() {
+        Long id = 1L;
+        when(peopleRepository.findById(id)).thenReturn(Optional.empty());
+
+        ResponseEntity<People> result = contactController.findById(id);
+
+        assertNotNull(result);
+        assertEquals(404, result.getStatusCodeValue());
+    }
+
+    @Test
+    public void testDeletePeopleNotFound() {
+        Long id = 1L;
+        when(peopleRepository.findById(id)).thenReturn(Optional.empty());
+
+        ResponseEntity<People> result = contactController.deletePeople(id);
+
+        assertNotNull(result);
+        assertEquals(404, result.getStatusCodeValue());
+    }
+
+    @Test
+    public void testGetPeopleById() {
+        Long id = 1L;
+        People people = new People();
+        when(peopleRepository.findById(id)).thenReturn(Optional.of(people));
+
+        ResponseEntity<People> result = contactController.findById(id);
+
+        assertNotNull(result);
+        assertEquals(200, result.getStatusCodeValue());
+        assertEquals(people, result.getBody());
+    }
+
+    @Test
+    public void testCreatePeopleWithMissingData() {
+        People people = new People();
+
+        BindingResult bindingResult = mock(BindingResult.class);
+        when(bindingResult.hasErrors()).thenReturn(true);
+
+        ResponseEntity<Object> result = contactController.createPeople(people, bindingResult);
+
+        assertNotNull(result);
+        assertEquals(400, result.getStatusCodeValue());
+    }
+
+    @Test
+    public void testFindPeopleByIdFound() {
+        Long id = 1L;
+        People people = new People();
+        people.setId(id);
+
+        when(peopleRepository.findById(id)).thenReturn(Optional.of(people));
+
+        ResponseEntity<People> result = contactController.findById(id);
+
+        assertNotNull(result);
+        assertEquals(200, result.getStatusCodeValue());
+        assertEquals(people, result.getBody());
+    }
+
+    @Test
+    public void testFindPeopleByIdNotFound() {
         Long id = 1L;
 
-        // Montar a URL do endpoint
-        String url = "http://localhost:" + port + "/pessoas/" + id;
+        when(peopleRepository.findById(id)).thenReturn(Optional.empty());
 
-        try {
-            // Enviar uma solicitação DELETE para o endpoint da API
-            restTemplate.delete(url);
+        ResponseEntity<People> result = contactController.findById(id);
 
-            // Se a exclusão for bem-sucedida, o endpoint deve retornar 404 (NOT_FOUND)
-            HttpStatus responseStatusCode = restTemplate.getForEntity(url, Void.class).getStatusCode();
-            assertEquals(HttpStatus.NOT_FOUND, responseStatusCode); // Status esperado após a exclusão
-        } catch (Exception e) {
-            // O try-catch captura a exceção quando a pessoa não é encontrada (404)
-            assertEquals(HttpStatus.NOT_FOUND, HttpStatus.valueOf(e.getMessage()));
-        }
+        assertNotNull(result);
+        assertEquals(404, result.getStatusCodeValue());
     }
 }

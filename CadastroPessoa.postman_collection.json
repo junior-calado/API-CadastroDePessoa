@@ -74,7 +74,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/contacts/1",
+					"raw": "http://localhost:8080/api/contacts/4",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -83,7 +83,7 @@
 					"path": [
 						"api",
 						"contacts",
-						"1"
+						"4"
 					]
 				}
 			},
@@ -96,7 +96,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nome\": \"Junior\",\r\n    \"cpf\": \"104.268.129-56\",\r\n    \"dataNascimento\": \"2004-06-30\",\r\n    \"contatos\": [\r\n        {\r\n            \"nome\": \"Alison\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        },\r\n        {\r\n            \"nome\": \"joao\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        }\r\n    ]\r\n}",
+					"raw": "{\r\n    \"name\": \"Junior\",\r\n    \"cpf\": \"104.268.129-56\",\r\n    \"birthDate\": \"2004-06-30\",\r\n    \"contacts\": [\r\n        {\r\n            \"name\": \"Alison\",\r\n            \"phone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        },\r\n        {\r\n            \"name\": \"joao\",\r\n            \"phone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        }\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -125,7 +125,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nome\": \"Evandro\",\r\n    \"cpf\": \"382.077.020-87\",\r\n    \"dataNascimento\": \"2004-04-30\",\r\n    \"contatos\": [\r\n        {\r\n            \"nome\": \"Alison\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        },\r\n        {\r\n            \"nome\": \"joao\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        },\r\n        {\r\n            \"nome\": \"Antonio\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        },\r\n        {\r\n            \"nome\": \"Liss\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        }\r\n    ]\r\n}",
+					"raw": "{\r\n    \"name\": \"Evandro\",\r\n    \"cpf\": \"382.077.020-87\",\r\n    \"birthDate\": \"2004-04-30\",\r\n    \"contacts\": [\r\n        {\r\n            \"name\": \"Alison\",\r\n            \"phone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        },\r\n        {\r\n            \"name\": \"joao\",\r\n            \"phone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        },\r\n        {\r\n            \"name\": \"Antonio\",\r\n            \"phone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        },\r\n        {\r\n            \"name\": \"Liss\",\r\n            \"phone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        }\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -154,7 +154,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nome\": \"Marcelo\",\r\n    \"cpf\": \"183.763.190-51\",\r\n    \"dataNascimento\": \"2004-02-03\",\r\n    \"contatos\": [\r\n        {\r\n            \"nome\": \"Marcia\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        }\r\n    ]\r\n}",
+					"raw": "{\r\n    \"name\": \"Marcelo\",\r\n    \"cpf\": \"183.763.190-51\",\r\n    \"birthDate\": \"2004-02-03\",\r\n    \"contacts\": [\r\n        {\r\n            \"name\": \"Marcia\",\r\n            \"phone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        }\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -183,7 +183,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nome\": \"Maria\",\r\n    \"cpf\": \"101.655.540-70\",\r\n    \"dataNascimento\": \"2000-08-03\",\r\n    \"contatos\": [\r\n        {\r\n            \"nome\": \"Bianca\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        },\r\n        {\r\n            \"nome\": \"Paula\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        },\r\n        {\r\n            \"nome\": \"Junior\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        },\r\n        {\r\n            \"nome\": \"Sergio\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        }\r\n    ]\r\n}",
+					"raw": "{\r\n    \"name\": \"Maria\",\r\n    \"cpf\": \"101.655.540-70\",\r\n    \"birthDate\": \"2000-08-03\",\r\n    \"contacts\": [\r\n        {\r\n            \"name\": \"Bianca\",\r\n            \"phone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        },\r\n        {\r\n            \"name\": \"Paula\",\r\n            \"phone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        },\r\n        {\r\n            \"name\": \"Junior\",\r\n            \"phone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        },\r\n        {\r\n            \"name\": \"Sergio\",\r\n            \"phone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        }\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -212,7 +212,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nome\": \"Ariadne\",\r\n    \"cpf\": \"319.336.320-03\",\r\n    \"dataNascimento\": \"1977-04-15\",\r\n    \"contatos\": [\r\n        {\r\n            \"nome\": \"Vagner\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        },\r\n        {\r\n            \"nome\": \"Junior\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        },\r\n        {\r\n            \"nome\": \"Maria\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        }\r\n    ]\r\n}",
+					"raw": "{\r\n    \"name\": \"Ariadne\",\r\n    \"cpf\": \"319.336.320-03\",\r\n    \"birthDate\": \"1977-04-15\",\r\n    \"contacts\": [\r\n        {\r\n            \"name\": \"Vagner\",\r\n            \"phone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        },\r\n        {\r\n            \"name\": \"Junior\",\r\n            \"phone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        },\r\n        {\r\n            \"name\": \"Maria\",\r\n            \"phone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        }\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -241,7 +241,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nome\": \"Guilherme\",\r\n    \"cpf\": \"354.036.270-30\",\r\n    \"dataNascimento\": \"2005-11-16\",\r\n    \"contatos\": [\r\n        {\r\n            \"nome\": \"Daniel\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        },\r\n        {\r\n            \"nome\": \"Cristina\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        }\r\n    ]\r\n}",
+					"raw": "{\r\n    \"name\": \"Guilherme\",\r\n    \"cpf\": \"354.036.270-30\",\r\n    \"birthDate\": \"2005-11-16\",\r\n    \"contacts\": [\r\n        {\r\n            \"name\": \"Daniel\",\r\n            \"phone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        },\r\n        {\r\n            \"name\": \"Cristina\",\r\n            \"phone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        }\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -270,7 +270,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nome\": \"Vagner\",\r\n    \"cpf\": \"774.400.240-79\",\r\n    \"dataNascimento\": \"1980-08-15\",\r\n    \"contatos\": [\r\n        {\r\n            \"nome\": \"Ariadne\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        },\r\n        {\r\n            \"nome\": \"Junior\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        },\r\n        {\r\n            \"nome\": \"Maria\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        }\r\n    ]\r\n}",
+					"raw": "{\r\n    \"name\": \"Vagner\",\r\n    \"cpf\": \"774.400.240-79\",\r\n    \"birthDate\": \"1980-08-15\",\r\n    \"contacts\": [\r\n        {\r\n            \"name\": \"Ariadne\",\r\n            \"phone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        },\r\n        {\r\n            \"name\": \"Junior\",\r\n            \"phone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        },\r\n        {\r\n            \"name\": \"Maria\",\r\n            \"phone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        }\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -299,7 +299,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nome\": \"Vitao\",\r\n    \"cpf\": \"09473787901\",\r\n    \"dataNascimento\": \"2004-06-30\",\r\n    \"contatos\": [\r\n        {\r\n            \"nome\": \"Pedro\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        },\r\n        {\r\n            \"nome\": \"Marcelo\",\r\n            \"telefone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        }\r\n    ]\r\n}",
+					"raw": "{\r\n    \"name\": \"Vitao\",\r\n    \"cpf\": \"09473787901\",\r\n    \"birthDate\": \"2004-06-30\",\r\n    \"contacts\": [\r\n        {\r\n            \"name\": \"Pedro\",\r\n            \"phone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        },\r\n        {\r\n            \"name\": \"Marcelo\",\r\n            \"phone\": \"44 9 9999-8888\",\r\n            \"email\": \"contato@gmail.com\"\r\n        }\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
