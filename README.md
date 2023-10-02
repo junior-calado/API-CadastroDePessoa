@@ -3,7 +3,7 @@ Esse foi um projeto com a finalidade de construir uma API de cadastro de Pessoa 
 
 ## Configurando o banco de dados
 
-Usamos o Docker para executar o PostgreSQL da aplicação.
+Nesse projeto foi utilizado o Docker para executar o PostgreSQL da aplicação.
 
 Acesse a pasta do projeto e execute:
 
